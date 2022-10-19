@@ -2,7 +2,7 @@
 const listMovieAPI = "https://api.themoviedb.org/3/discover/movie?api_key=8a7b3c0bea4f8ac64aaf7351a83e204a&sort_by=popularity.desc"
 const IMG_PATH = "https://image.tmdb.org/t/p/w500/";
 const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=8a7b3c0bea4f8ac64aaf7351a83e204a&query=&page=1";
-const column = document.querySelector(".col");
+const konten = document.querySelector("#content");
 
 // list movie berdasarkan popularity
 getDataMovie = async () => {
@@ -12,8 +12,10 @@ getDataMovie = async () => {
     let listMovie = ' ';
 
    movie.results.forEach(item => {
-       let list = ` <div class="card shadow-sm">
-            <img src="${IMG_PATH + item.poster_path}" class="card-img-top" alt="...">
+       let list = ` 
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="${IMG_PATH + item.poster_path}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-text">${item.title}</p>
                     <div class="d-flex justify-content-between align-items-center">
@@ -23,11 +25,13 @@ getDataMovie = async () => {
                         <small class="text-muted">${item.vote_average}</small>
                     </div>
                 </div>
-            </div>`;
+            </div>
+        </div>
+        `;
         listMovie += list;
    });
 
-   column.innerHTML = listMovie;
+   konten.innerHTML = listMovie;
 }
 getDataMovie();
 
